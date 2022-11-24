@@ -246,11 +246,11 @@ function cobrar (nombre, precio){
     do {
         pago = parseInt(prompt("Con cuanto pagas?"));
     } while (pago <= precio);
-    alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto:" + nombre + ".Su vuelto es " + (pago - precio))
+    alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto: " + nombre + ".Su vuelto es de $" + (pago - precio))
 }
 
 function saludoFinal (){
-    alert("Gracias por su compra, " + nombreUsuario);{
+    alert("Gracias por elegirnos, " + nombreUsuario);{
     }
 }
 
