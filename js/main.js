@@ -247,7 +247,9 @@ function cobrar (nombre, precio){
     if(pago >= precio) {
         alert("Gracias!," + nombreUsuario + ".Su vuelto es " + (pago - precio))
     }else{
-        alert("No te alcanza!")
+        alert("No te alcanza!");
+        let pago = parseInt(prompt("Con cuanto pagas?"));
+        alert("Gracias!," + nombreUsuario + ".Su vuelto es " + (pago - precio))
     }
 }
 
