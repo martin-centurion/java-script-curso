@@ -242,15 +242,11 @@ function presupuesto (nombre, color, talle, precio){
 }
 
 function cobrar (nombre, precio){
-    alert(nombreUsuario + ". Usted lleva el siguiente producto " + nombre + "\nPrecio: $" + precio);
-    let pago = parseInt(prompt("Con cuanto pagas?"));
-    if(pago >= precio) {
-        alert("Gracias!," + nombreUsuario + ".Su vuelto es " + (pago - precio))
-    }else{
-        alert("No te alcanza!");
-        let pago = parseInt(prompt("Con cuanto pagas?"));
-        alert("Gracias!," + nombreUsuario + ".Su vuelto es " + (pago - precio))
-    }
+    let pago;
+    do {
+        pago = parseInt(prompt("Con cuanto pagas?"));
+    } while (pago <= precio);
+    alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto:" + nombre + ".Su vuelto es " + (pago - precio))
 }
 
 function saludoFinal (){
