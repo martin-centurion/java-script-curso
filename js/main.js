@@ -244,7 +244,7 @@ function presupuesto (nombre, color, talle, precio){
 function cobrar (nombre, precio){
     let pago;
     do {
-        pago = parseInt(prompt("Con cuanto pagas?"));
+        pago = parseInt(prompt("Con cuanto pagas?. El precio del producto " + nombre + " es de $" + precio));
         while (isNaN(pago)) {
             alert("Ingrese un valor númerico");
             pago = parseInt(prompt("Con cuanto pagas?"));
