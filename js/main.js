@@ -249,7 +249,7 @@ function cobrar (nombre, precio){
             alert("Ingrese un valor númerico");
             pago = parseInt(prompt("Con cuanto pagas?. El precio del producto " + nombre + " es de $" + precio));
         }
-    } while (pago <= precio);
+    } while (pago < precio);
     alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto: " + nombre + ". Su vuelto es de $" + (pago - precio))
 }
 
