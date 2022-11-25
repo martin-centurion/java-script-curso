@@ -245,8 +245,12 @@ function cobrar (nombre, precio){
     let pago;
     do {
         pago = parseInt(prompt("Con cuanto pagas?"));
+        while (isNaN(pago)) {
+            alert("Ingrese un valor númerico");
+            pago = parseInt(prompt("Con cuanto pagas?"));
+        }
     } while (pago <= precio);
-    alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto: " + nombre + ".Su vuelto es de $" + (pago - precio))
+    alert("Gracias!, " + nombreUsuario + ". Ha comprado el producto: " + nombre + ". Su vuelto es de $" + (pago - precio))
 }
 
 function saludoFinal (){
