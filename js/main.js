@@ -1,74 +1,110 @@
-
 class Cliente {
-    constructor(nombre, direccion, telefono, mail){
+    constructor(nombre, apellido, dni, saldo) {
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.mail = mail;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.saldo = saldo;
     }
 }
 
-const clienteUno = new Cliente("Marcos", "Francia 4260, Florida Oeste, Provincia de Buenos Aires", 5491156355415, "marcos@gmail.com");
-const clienteDos = new Cliente("Vanesa", "Leloir 549, Marcos Paz, Provincia de Buenos Aires", 5492525321, "vanesa@gmail.com");
+const clienteSamuel = new Cliente("Samuel", "Tocaimaza", 12345678, 1000);
+const clienteJuan = new Cliente("Juan", "Perez", 87654321, 2000);
+const clienteMaria = new Cliente("Maria", "Gomez", 12345678, 3000);
+const clientePedro = new Cliente("Pedro", "Gonzalez", 12345678, 4000);
 
-const arrayClientes = [clienteUno, clienteDos];
+const arrayClientes = [];
 
-/* PRODUCTOS */
+arrayClientes.push(clienteSamuel);
+arrayClientes.push(clienteJuan);
+arrayClientes.push(clienteMaria);
+arrayClientes.push(clientePedro);
 
-class Producto {
-    constructor(nombre, precio, id){
-        this.nombre = nombre;
-        this.precio = precio;
-        this.id = id;
-    }
-}
+console.log(arrayClientes);
 
-const buzoUno = new Producto("Buzo1", 12400, 1);
-const buzoDos = new Producto("Buzo2", 13000, 2);
-const buzoTres = new Producto("Buzo3", 12000, 3);
-const buzoCuatro = new Producto("Buzo4", 13100, 4);
+//Función con el menú de opciones:
 
-const articulos = [buzoUno, buzoDos, buzoTres, buzoCuatro];
-
-const arrayProductos = [];
-
-function menu (){
-    alert("Bienvenidos a Tienda de Ropa.");
-    const opcion = parseInt(prompt("Ingrese una opción: \n1) Nuestra tienda.\n2)Finalizar Compra\n3)Salir."));
+function menu() {
+    alert("Bienvenido al Banco CoderJaus");
+    let opcion = parseInt(prompt("Ingrese una opción: \n 1) Alta de cliente \n 2) Baja de cliente \n 3) Modificación de cliente \n 4) Consulta de cliente \n 5) Salir"));
     return opcion;
 }
 
+//Función para dar de alta un cliente:
 
-function carrito () {
-    let usuarioCompra = parseInt(prompt("Escriba el id del producto que desea adquirir: "));
-    let productoElegido = articulos.find (el => el.id === usuarioCompra);
-    console.log(productoElegido);
-    if(productoElegido === undefined){
-        alert("Ingrese un numero valido por favor");
-        carrito();
-    }
-    arrayProductos.push(productoElegido.precio)
+function altaCliente() {
+    let nombre = prompt("Ingrese el nombre del cliente: ");
+    let apellido = prompt("Ingrese el apellido del cliente: ");
+    let dni = parseInt(prompt("Ingrese el DNI del cliente: "));
+    let saldo = parseInt(prompt("Ingrese el saldo del cliente: "));
+    let cliente = new Cliente(nombre, apellido, dni, saldo);
+    arrayClientes.push(cliente);
+    console.log(arrayClientes);
 }
 
-function finalizarCompra () {
-    let totalPrecio = arrayProductos.reduce((acumulador, producto) => acumulador + producto, 0);
-    alert("El total de su compra es " + totalPrecio + " ETH")
-    alert("Gracias por elegir Mi-Tienda para adquirir NFT's =)")
+//Función para dar de baja un cliente:
+
+function bajaCliente() {
+    let dni = parseInt(prompt("Ingrese el DNI del cliente: "));
+    let cliente = arrayClientes.find(cliente => cliente.dni === dni);
+    let indice = arrayClientes.indexOf(cliente);
+    arrayClientes.splice(indice, 1);
+    console.log(arrayClientes);
 }
+
+//Función para modificar un cliente:
+
+function modificacionCliente() {
+    let dni = parseInt(prompt("Ingrese el DNI del cliente: "));
+    let cliente = arrayClientes.find(cliente => cliente.dni === dni);
+    let indice = arrayClientes.indexOf(cliente);
+    let nombre = prompt("Ingrese el nombre del cliente: ");
+    let apellido = prompt("Ingrese el apellido del cliente: ");
+    let saldo = parseInt(prompt("Ingrese el saldo del cliente: "));
+    let clienteModificado = new Cliente(nombre, apellido, dni, saldo);
+    arrayClientes.splice(indice, 1, clienteModificado);
+    console.log(arrayClientes);
+}
+
+//Función para consultar un cliente:
+
+function consultaCliente() {
+    let dni = parseInt(prompt("Ingrese el DNI del cliente: "));
+    let cliente = arrayClientes.find(cliente => cliente.dni === dni);
+    console.log(cliente);
+}
+
+
+//Función para salir del programa:
+
+function salir() {
+    alert("Gracias por utilizar el Banco CoderJaus");
+}
+
+//Ejecuto el el programa:
 
 let opcion = menu();
-switch(opcion){
+switch (opcion) {
     case 1:
-        carrito();
+        altaCliente();
         break;
     case 2:
-        finalizarCompra();
+        bajaCliente();
         break;
     case 3:
+        modificacionCliente();
+        break;
+    case 4:
+        consultaCliente();
+        break;
+    case 5:
         salir();
         break;
     default:
-    alert("Opción incorrecta");
-    break;
+        alert("Opción incorrecta, rata!");
+        break;
 }
+
+
+
+
 
