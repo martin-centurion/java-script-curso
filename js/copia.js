@@ -51,7 +51,7 @@ function carrito () {
 }
 
 function finalizarCompra () {
-    let totalPrecio = arrayProductos.reduce((acumulador, producto) => acumulador + producto, 0);
+    let totalPrecio = arrayProductos.reduce((acumulador, productoElegido) => acumulador + productoElegido, 0);
     alert("El total de su compra es " + totalPrecio + " ETH")
     alert("Gracias por elegir Mi-Tienda para adquirir NFT's =)")
 }
